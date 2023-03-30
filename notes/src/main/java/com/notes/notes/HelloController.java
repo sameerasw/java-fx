@@ -9,7 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.text.Text;
+import java.awt.Desktop;
+import java.io.*;
+import java.net.URI;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import javafx.scene.web.WebView;
@@ -24,7 +26,7 @@ import java.util.ResourceBundle;
 public class HelloController implements Initializable {
 
     @FXML
-    private WebView webView;
+    public WebView webView;
 
     @FXML
     private ChoiceBox<String> courseSelect;
@@ -69,12 +71,27 @@ public class HelloController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    private Button browser;
+
+    @FXML
+    void browserClick(ActionEvent event) {
+        String urlString = webView.getEngine().getLocation();
+        Desktop desk = Desktop.getDesktop();
+        try {
+            desk.browse(new URL(urlString).toURI());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private String[] uowModules = {"Software Development 1 - Programming","Software Development 1 - Design","Mathematics in Computing"};
     private String[] iitModules = {"OOP","OOP Design","Web Development","Databases","Introduction to QA"};
     WebEngine webEngine;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        courseSelect.getItems().clear();
         courseSelect.getItems().addAll(courses);
         courseSelect.setOnAction(this::courseSelect);
         moduleSelect.setOnAction(this::moduleSelect);
