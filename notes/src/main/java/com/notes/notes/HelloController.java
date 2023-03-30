@@ -10,8 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import java.awt.Desktop;
+import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.URI;
+
+import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import javafx.scene.web.WebView;
@@ -82,6 +85,14 @@ public class HelloController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private Button dark;
+
+    @FXML
+    void darkEnter(ActionEvent event) {
+        dark.setTooltip(new javafx.scene.control.Tooltip("Press Ctrl + Shift + L to switch to the dark mode"));
     }
 
     private String[] uowModules = {"Software Development 1 - Programming","Software Development 1 - Design","Mathematics in Computing"};

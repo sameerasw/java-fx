@@ -54,6 +54,14 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
+                  <Button fx:id="dark" alignment="CENTER" mnemonicParsing="false" onAction="#darkEnter" style="-fx-background-color: #999999;" text="🌙">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <WebView fx:id="webView" prefHeight="788.0" prefWidth="1405.0" />
