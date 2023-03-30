@@ -30,7 +30,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <Button fx:id="timeTable" alignment="CENTER" mnemonicParsing="false" onAction="#timeTableClick" style="-fx-background-color: #444444;" text="TimeTable" textFill="WHITE">
+                  <Button fx:id="timeTable" alignment="CENTER" mnemonicParsing="false" onAction="#timeTableClick" style="-fx-background-color: #444444;" text="📅  TimeTable" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -38,13 +38,21 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="intranet" alignment="CENTER" mnemonicParsing="false" onAction="#intranetClick" style="-fx-background-color: #444444;" text="Intranet" textFill="WHITE">
+                  <Button fx:id="intranet" alignment="CENTER" mnemonicParsing="false" onAction="#intranetClick" style="-fx-background-color: #444444;" text="🌐 Intranet" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                  </Button>
+                  <Button fx:id="browser" alignment="CENTER" mnemonicParsing="false" onAction="#browserClick" style="-fx-background-color: #444444;" text="➡ Open in browser" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </Button>
                </children>
             </HBox>
