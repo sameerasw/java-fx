@@ -44,11 +44,10 @@ public class HelloController implements Initializable {
     private Scene scene;
 
     @FXML
-    void timeTableClick(ActionEvent event) throws IOException {
+    void timeTableClick(ActionEvent event) throws IOException, InterruptedException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("timetable.fxml"));
         root = loader.load();
         timetableController timetableController = loader.getController();
-        timetableController.initialize();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -91,6 +90,8 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        courseSelect.setValue("Select Course");
+        moduleSelect.setValue("Select Module");
         courseSelect.getItems().clear();
         courseSelect.getItems().addAll(courses);
         courseSelect.setOnAction(this::courseSelect);
