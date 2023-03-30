@@ -9,21 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import java.awt.Desktop;
-import java.awt.event.MouseEvent;
-import java.io.*;
-import java.net.URI;
-
-import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
-import javafx.stage.Stage;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
-
-import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
@@ -54,6 +47,7 @@ public class HelloController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Time Table");
         stage.show();
     }
 
@@ -64,12 +58,11 @@ public class HelloController implements Initializable {
     void intranetClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("intranet.fxml"));
         root = loader.load();
-        intranetController intranetController = loader.getController();
         URL url = new URL("https://in.iit.ac.lk/");
-        intranetController.initialize(url, null);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("IIT Intranet");
         stage.show();
     }
 
@@ -93,6 +86,21 @@ public class HelloController implements Initializable {
     @FXML
     void darkEnter(ActionEvent event) {
         dark.setTooltip(new javafx.scene.control.Tooltip("Press Ctrl + Shift + L to switch to the dark mode"));
+    }
+
+    @FXML
+    private Button ide;
+
+    @FXML
+    void ideClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ides.fxml"));
+        root = loader.load();
+        timetableController ideController = loader.getController();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Online Compilers");
+        stage.show();
     }
 
     private String[] uowModules = {"Software Development 1 - Programming","Software Development 1 - Design","Mathematics in Computing"};
