@@ -87,21 +87,6 @@ public class HelloController implements Initializable {
     void darkEnter(ActionEvent event) {
         dark.setTooltip(new javafx.scene.control.Tooltip("Press Ctrl + Shift + L to switch to the dark mode"));
     }
-
-    @FXML
-    private Button ide;
-
-    @FXML
-    void ideClick(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ides.fxml"));
-        root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Online Compilers");
-        stage.show();
-    }
-
     private String[] uowModules = {"Software Development 1 - Programming","Software Development 1 - Design","Mathematics in Computing"};
     private String[] iitModules = {"OOP","OOP Design","Web Development","Databases","Introduction to QA"};
     WebEngine webEngine;
