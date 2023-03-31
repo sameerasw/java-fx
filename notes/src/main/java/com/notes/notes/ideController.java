@@ -20,6 +20,10 @@ import java.util.ResourceBundle;
 
 public class ideController implements Initializable {
 
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
+
     @FXML
     private Button ideBack;
 
@@ -28,10 +32,6 @@ public class ideController implements Initializable {
 
     @FXML
     private ChoiceBox<String> langSelect;
-
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
 
     @FXML
     void ideBackClick(ActionEvent event) throws IOException {
@@ -43,10 +43,11 @@ public class ideController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Study Portal");
         stage.show();
     }
 
-    private final String[] langs = {"Python","Java","Java Script","SQL"};
+    private String[] langs = {"Python","Java","Java Script","SQL"};
     WebEngine webEngine;
 
     @Override
@@ -58,17 +59,17 @@ public class ideController implements Initializable {
     }
 
     private void langSelect(ActionEvent actionEvent) {
-        String module = langSelect.getValue();
+        String lang = langSelect.getValue();
         Stage stage = (Stage) langSelect.getScene().getWindow();
         stage.setTitle(langSelect.getValue());
         WebEngine webEngine = ideView.getEngine();
-        if (Objects.equals(module, "Python")) {
+        if (Objects.equals(lang, "Python")) {
             webEngine.load("https://www.programiz.com/python-programming/online-compiler/");
-        } else if (Objects.equals(module, "Java")) {
+        } else if (Objects.equals(lang, "Java")) {
             webEngine.load("https://www.programiz.com/java-programming/online-compiler/");
-        } else if (Objects.equals(module, "Java Script")) {
+        } else if (Objects.equals(lang, "Java Script")) {
             webEngine.load("https://www.programiz.com/javascript/online-compiler/");
-        } else if (Objects.equals(module, "SQL")) {
+        } else if (Objects.equals(lang, "SQL")) {
             webEngine.load("https://www.programiz.com/sql/online-compiler/");
         }
     }

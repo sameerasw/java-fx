@@ -95,7 +95,6 @@ public class HelloController implements Initializable {
     void ideClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ides.fxml"));
         root = loader.load();
-        timetableController ideController = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
