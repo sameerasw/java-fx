@@ -43,6 +43,11 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.text</groupId>
+            <artifactId>org.eclipse.text</artifactId>
+            <version>3.5.101</version>
+        </dependency>
     </dependencies>
 
     <build>

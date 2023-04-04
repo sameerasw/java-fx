@@ -41,13 +41,13 @@ public class HelloController implements Initializable {
 
     @FXML
     void timeTableClick(ActionEvent event) throws IOException, InterruptedException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("timetable.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("timetableAB.fxml"));
         root = loader.load();
-        timetableController timetableController = loader.getController();
+        timetableABController timetableABController = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Time Table");
+        stage.setTitle("Time Table Group A & B");
         stage.show();
     }
 
@@ -87,6 +87,20 @@ public class HelloController implements Initializable {
     void darkEnter(ActionEvent event) {
         dark.setTooltip(new javafx.scene.control.Tooltip("Press Ctrl + Shift + L to switch to the dark mode"));
     }
+
+    @FXML
+    private Button compiler;
+
+    @FXML
+    void compilerClick(ActionEvent event) throws IOException {
+        Stage stage = (Stage) compiler.getScene().getWindow();
+        Stage newStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("compiler.fxml"));
+        newStage.setTitle("Compiler");
+        newStage.setScene(new Scene(root));
+        newStage.show();
+    }
+
     private String[] uowModules = {"Software Development 1 - Programming","Software Development 1 - Design","Mathematics in Computing"};
     private String[] iitModules = {"OOP","OOP Design","Web Development","Databases","Introduction to QA"};
     WebEngine webEngine;
