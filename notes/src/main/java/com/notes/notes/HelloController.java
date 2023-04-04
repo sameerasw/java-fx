@@ -9,18 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import java.awt.Desktop;
-import java.io.*;
-import java.net.URI;
 import javafx.scene.web.WebEngine;
-import javafx.stage.Stage;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
-
-import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
@@ -44,14 +40,14 @@ public class HelloController implements Initializable {
     private Scene scene;
 
     @FXML
-    void timeTableClick(ActionEvent event) throws IOException {
+    void timeTableClick(ActionEvent event) throws IOException, InterruptedException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("timetable.fxml"));
         root = loader.load();
         timetableController timetableController = loader.getController();
-        timetableController.initialize();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Time Table");
         stage.show();
     }
 
@@ -62,12 +58,11 @@ public class HelloController implements Initializable {
     void intranetClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("intranet.fxml"));
         root = loader.load();
-        intranetController intranetController = loader.getController();
         URL url = new URL("https://in.iit.ac.lk/");
-        intranetController.initialize(url, null);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("IIT Intranet");
         stage.show();
     }
 
@@ -85,12 +80,21 @@ public class HelloController implements Initializable {
         }
     }
 
+    @FXML
+    private Button dark;
+
+    @FXML
+    void darkEnter(ActionEvent event) {
+        dark.setTooltip(new javafx.scene.control.Tooltip("Press Ctrl + Shift + L to switch to the dark mode"));
+    }
     private String[] uowModules = {"Software Development 1 - Programming","Software Development 1 - Design","Mathematics in Computing"};
     private String[] iitModules = {"OOP","OOP Design","Web Development","Databases","Introduction to QA"};
     WebEngine webEngine;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        courseSelect.setValue("Select Course");
+        moduleSelect.setValue("Select Module");
         courseSelect.getItems().clear();
         courseSelect.getItems().addAll(courses);
         courseSelect.setOnAction(this::courseSelect);
